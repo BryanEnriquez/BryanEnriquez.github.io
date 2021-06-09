@@ -1,0 +1,27 @@
+{
+  "name": "bryanenriquez.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio site",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryanEnriquez/BryanEnriquez.github.io.git"
+  },
+  "author": "Bryan A Enriquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BryanEnriquez/BryanEnriquez.github.io/issues"
+  },
+  "homepage": "https://github.com/BryanEnriquez/BryanEnriquez.github.io#readme",
+  "devDependencies": {
+    "parcel": "^2.0.0-nightly.714"
+  },
+  "dependencies": {
+    "core-js": "^3.14.0",
+    "regenerator-runtime": "^0.13.7"
+  }
+}
