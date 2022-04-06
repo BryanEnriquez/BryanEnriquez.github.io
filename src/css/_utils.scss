@@ -1,0 +1,12 @@
+@mixin h2-spacing($s: 3rem, $m: 4rem, $l: 5.5rem) {
+  h2 {
+    margin-bottom: $s;
+
+    @media (min-width: $media-m) {
+      margin-bottom: $m;
+    }
+    @media (min-width: $media-l) {
+      margin-bottom: $l;
+    }
+  }
+}

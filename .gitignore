@@ -1,6 +1,3 @@
 .parcel-cache
 dist
 node_modules
-_base.scss
-_header.scss
-main.scss

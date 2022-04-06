@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Expletus Sans';
+  src: url('./font/ExpletusSans-VariableFont_wght.ttf') format('truetype');
+}
+
+$color-light: #fff;
+$color-dark-shade: #3f414d;
+
+$media-m: 768px;
+$media-l: 1024px;
+
+$header-height: 7rem;
+$header-height-m: 10rem;
+
+$width-max: 112rem;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Expletus Sans', monospace;
+  box-sizing: border-box;
+  color: $color-dark-shade;
+  background-color: $color-light;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+
+  @media (min-width: $media-m) {
+    display: none;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
