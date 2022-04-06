@@ -1,3 +1,5 @@
+// actual: imports stable + stage 3
+import 'core-js/stable';
 import emailjs from '@emailjs/browser';
 import icons from '../images/icons.svg';
 import portfolio from '../images/portfolio-m.png';

@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.5.0",
-    "core-js": "^3.14.0",
-    "regenerator-runtime": "^0.13.7"
-  }
+    "core-js": "^3.21.1",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
