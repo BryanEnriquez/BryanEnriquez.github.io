@@ -4,8 +4,9 @@ import emailjs from '@emailjs/browser';
 import icons from '../images/icons.svg';
 import portfolio from '../images/portfolio-m.png';
 import designo from '../images/designo-m.png';
+import feedback from '../images/feedback-app-m.png';
 
-const images = { designo, portfolio };
+const images = { designo, portfolio, feedback };
 
 const headerEl = document.querySelector('.header');
 const navbarEl = document.querySelector('.navbar');
@@ -84,6 +85,7 @@ function loadImg(entries, observer) {
     const { target } = entry;
 
     target.src = images[target.dataset.src];
+
     target.addEventListener('load', () => {
       target.classList.remove('blur');
     });
