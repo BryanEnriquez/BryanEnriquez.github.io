@@ -109,6 +109,7 @@ const nameEl = document.getElementById('name');
 const emailEl = document.getElementById('email');
 const messageEl = document.getElementById('message');
 const formBtnEl = document.getElementById('form-btn--js');
+const formInputs = [nameEl, emailEl, messageEl];
 
 emailjs.init('gSeSiP9lCnYcT1OoD');
 
@@ -127,32 +128,28 @@ const formChecks = {
   },
 };
 
-const setInputFb = (inputName, errMsg) => {
-  document.getElementById(`feedback-${inputName}--js`).innerText = errMsg;
+const setInputErrorMessage = (inputName, errMsg) => {
+  document.getElementById(`err-${inputName}--js`).innerText = errMsg;
 };
 
 let feedbackTimerId = null;
 
-const setFormMsg = (text, clearTime) => {
-  document.getElementById('form-err--js').innerText = text;
+const setFormMessage = (text, clearTime) => {
+  const formFeedback = document.getElementById('form-feedback--js');
+
+  formFeedback.innerText = text;
 
   if (!clearTime) return;
 
   if (feedbackTimerId) clearTimeout(feedbackTimerId);
 
   feedbackTimerId = setTimeout(() => {
-    document.getElementById('form-err--js').innerText = '';
+    formFeedback.innerText = '';
   }, clearTime * 1000);
 };
 
-const clearInputFb = () => {
-  [nameEl, emailEl, messageEl].forEach(el => {
-    document.getElementById(`feedback-${el.name}--js`).innerText = '';
-  });
-};
-
 const clearFormValues = () => {
-  [nameEl, emailEl, messageEl].forEach(el => {
+  formInputs.forEach(el => {
     el.value = '';
   });
 };
@@ -163,53 +160,51 @@ formEl.addEventListener('submit', function (e) {
   e.preventDefault();
   formBtnEl.setAttribute('disabled', 'true');
 
-  let formErr = false;
+  let formError = false;
 
-  // Validate inputs
-  [nameEl, emailEl, messageEl].forEach(el => {
+  formInputs.forEach(el => {
     const input = el.value.trim();
 
-    const lengthErr = formChecks.validateLength(input);
+    const lengthError = formChecks.validateLength(input);
 
-    if (lengthErr) {
-      formErr = true;
-      setInputFb(el.name, lengthErr);
+    if (lengthError) {
+      formError = true;
+      setInputErrorMessage(el.name, lengthError);
       return;
     }
 
-    const validationErr = formChecks[el.name](el.value);
+    const validationError = formChecks[el.name](el.value);
 
-    if (validationErr) {
-      formErr = true;
-      setInputFb(el.name, validationErr);
+    if (validationError) {
+      formError = true;
+      setInputErrorMessage(el.name, validationError);
       return;
     }
 
-    // Clear any existing err msg if input is valid
-    setInputFb(el.name, '');
+    setInputErrorMessage(el.name, '');
   });
 
-  if (formErr) {
-    setFormMsg('There was an issue with 1 or more fields.');
+  if (formError) {
+    setFormMessage('There was an issue with 1 or more fields.');
     formBtnEl.removeAttribute('disabled');
     return;
   }
 
-  // Send form
   formBtnEl.innerText = 'Sending...';
-  clearInputFb();
+  setFormMessage('');
 
   this.contact_number.value = (Math.random() * 100000) | 0;
 
   emailjs
     .sendForm('contact_service', 'contact_form', this)
     .then(() => {
-      setFormMsg('Sent!', 10);
+      setFormMessage('Sent!', 10);
       clearFormValues();
       failedAttempts = 0;
     })
     .catch(_ => {
-      setFormMsg('An error occurred. Please try again later.', 12);
+      setFormMessage('An error occurred. Please try again later.', 12);
+      failedAttempts++;
 
       if (failedAttempts >= 2) {
         clearFormValues();

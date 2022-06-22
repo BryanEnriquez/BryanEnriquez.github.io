@@ -4,75 +4,68 @@
   max-width: 56rem;
   margin: 0 auto;
 
-  @media (min-width: $media-l) {
-    max-width: $width-max;
-  }
-
   @include h2-spacing();
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
-    gap: 6rem;
+    gap: 70px;
     margin-bottom: 0.6rem;
+  }
+}
 
-    @media (min-width: $media-m) {
-      gap: 7rem;
-    }
-    @media (min-width: $media-l) {
-      gap: 9rem;
+@media (min-width: $media-m) {
+  .projects {
+    &__grid {
+      gap: 80px;
     }
   }
+}
 
-  &__grid &__item:nth-of-type(even) {
-    @media (min-width: $media-l) {
-      .projects__copy {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
+@media (min-width: $media-l) {
+  .projects {
+    max-width: $width-max;
+
+    &__grid {
+      gap: 110px;
+
+      > .project:nth-of-type(odd) {
+        grid-template-columns: 8fr 6fr;
+      }
+
+      > .project:nth-of-type(even) {
+        grid-template-columns: 6fr 8fr;
+
+        > .project__copy {
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+        }
       }
     }
   }
+}
 
-  &__item {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    gap: 2.5rem;
-    overflow: hidden;
+///// ----------------------------------------------------------------------- /////
 
-    padding: 2px;
+.project {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 25px;
+
+  padding: 2px;
+  border-radius: 3px;
+  color: $color-light;
+  background-color: $color-dark-shade;
+
+  .img {
+    display: block;
+    width: 100%;
     border-radius: 3px;
-    color: $color-light;
-    background-color: $color-dark-shade;
 
-    @media (min-width: $media-l) {
-      grid-template-rows: auto;
-      align-items: center;
-      gap: 30px;
-      padding: 7rem 30px;
-    }
-
-    .img {
-      display: block;
-      width: 100%;
-      border-radius: 3px;
-
-      &.blur {
-        filter: blur(10px);
-      }
-    }
-  }
-
-  &__grid &__item:nth-of-type(odd) {
-    @media (min-width: $media-l) {
-      grid-template-columns: 8fr 6fr;
-    }
-  }
-
-  &__grid &__item:nth-of-type(even) {
-    @media (min-width: $media-l) {
-      grid-template-columns: 6fr 8fr;
+    &.blur {
+      filter: blur(10px);
     }
   }
 
@@ -80,48 +73,40 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, auto);
-    gap: 2rem;
+    gap: 20px;
     padding: 0 15px 15px 15px;
-    overflow: hidden;
-
-    @media (min-width: $media-l) {
-      gap: 20px;
-      padding: 0;
-    }
   }
 
-  &__label {
-    display: block;
-    font-weight: 600;
+  h3 {
     font-size: 1.8rem;
-    line-height: 1;
+    line-height: 1.5;
     text-align: center;
-
-    @media (min-width: $media-m) {
-      font-size: 2.2rem;
-    }
-    @media (min-width: $media-l) {
-      text-align: left;
-    }
   }
 
-  &__desc,
+  &__desc {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+
+  &__desc p,
   &__stack p {
     font-family: sans-serif;
     font-size: 1.5rem;
-    line-height: 2.3rem;
-
-    @media (min-width: $media-m) {
-      font-size: 1.6rem;
-      line-height: 2.4rem;
-    }
+    line-height: 1.5;
   }
 
   &__stack {
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0.2rem;
+
+    p {
+      font-weight: 600;
+    }
 
     ul {
       display: flex;
@@ -131,9 +116,10 @@
     }
 
     li {
-      padding: 6px;
       margin-top: 6px;
+      padding: 6px;
       font-size: 1.5rem;
+      line-height: 2rem;
       text-align: center;
       border: 1px solid $color-light;
       border-radius: 2px;
@@ -168,8 +154,34 @@
         background-color: $color-light;
         border: 2px solid transparent;
       }
+    }
+  }
+}
 
-      @media (min-width: $media-m) {
+@media (min-width: $media-m) {
+  .project {
+    h3 {
+      font-size: 2.2rem;
+    }
+
+    &__desc p,
+    &__stack p {
+      font-size: 1.6rem;
+    }
+
+    &__stack {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto;
+      gap: 10px;
+
+      p {
+        margin-top: 6px;
+        padding: 5px 0;
+      }
+    }
+
+    &__links {
+      a {
         &:hover,
         &:active {
           color: $color-light;
@@ -177,6 +189,25 @@
           border: 2px solid $color-light;
         }
       }
+    }
+  }
+}
+
+@media (min-width: $media-l) {
+  .project {
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 30px;
+    border-radius: 5px;
+
+    &__copy {
+      gap: 20px;
+      padding: 0;
+    }
+
+    h3 {
+      text-align: left;
     }
   }
 }

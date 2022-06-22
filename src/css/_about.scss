@@ -1,16 +1,13 @@
+@import './utils';
+
 .about {
   max-width: 56rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
-
-  @media (min-width: $media-l) {
-    max-width: $width-max;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 60px;
-  }
+  gap: 70px 0;
+  // padding-bottom: 0.6rem;
 
   h2,
   h3 {
@@ -19,31 +16,23 @@
     background-color: $color-light;
   }
 
+  h3 {
+    @include h2-sizing;
+  }
+
   // Group 1
   &__me {
-    width: 100%;
-    margin-bottom: 7rem;
-
-    @media (min-width: $media-m) {
-      margin-bottom: 9rem;
-    }
-    @media (min-width: $media-l) {
-      margin-bottom: 0;
-    }
-
     p {
-      margin-top: 2.4rem;
       font-family: sans-serif;
       font-size: 1.5rem;
-      line-height: 2.3rem;
+      line-height: 1.5;
 
-      @media (min-width: $media-m) {
-        margin-top: 2.6rem;
-        font-size: 1.6rem;
-        line-height: 2.4rem;
+      &:first-of-type {
+        margin-top: 2.4rem;
       }
-      @media (min-width: $media-l) {
-        margin-top: 3.2rem;
+
+      &:last-of-type {
+        margin-top: 1.2rem;
       }
     }
   }
@@ -51,15 +40,11 @@
   // Group 2
   &__skills {
     ul {
-      margin: 3.7rem 0 0.6rem 0;
+      margin-top: 37px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
       grid-auto-rows: auto;
       gap: 36px;
-
-      @media (min-width: $media-m) {
-        margin-top: 4rem;
-      }
     }
 
     li {
@@ -72,20 +57,69 @@
         height: 3.5rem;
         width: 3.5rem;
         fill: $color-light;
-
-        @media (min-width: $media-m) {
-          height: 3.8rem;
-          width: 3.8rem;
-        }
       }
 
       span {
         font-size: 1.5rem;
         padding-top: 12px;
         line-height: 1;
+      }
+    }
+  }
+}
 
-        @media (min-width: $media-m) {
+@media (min-width: $media-m) {
+  .about {
+    gap: 90px 0;
+
+    &__me {
+      p {
+        font-size: 1.6rem;
+
+        &:first-of-type {
+          margin-top: 2.6rem;
+        }
+
+        &:last-of-type {
+          margin-top: 1.4rem;
+        }
+      }
+    }
+
+    &__skills {
+      ul {
+        margin-top: 40px;
+      }
+
+      li {
+        svg {
+          height: 3.8rem;
+          width: 3.8rem;
+        }
+
+        span {
           font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $media-l) {
+  .about {
+    max-width: $width-max;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 0 60px;
+
+    &__me {
+      p {
+        &:first-of-type {
+          margin-top: 3.2rem;
+        }
+
+        &:last-of-type {
+          margin-top: 1.6rem;
         }
       }
     }
