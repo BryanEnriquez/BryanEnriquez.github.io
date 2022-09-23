@@ -1,20 +1,22 @@
-// actual: imports stable + stage 3
-import 'core-js/stable';
 import emailjs from '@emailjs/browser';
 import icons from '../images/icons.svg';
 import portfolio from '../images/portfolio-m.png';
 import designo from '../images/designo-m.png';
 import feedback from '../images/feedback-app-m.png';
 
-const images = { designo, portfolio, feedback };
+const images: { [x: string]: string } = { designo, portfolio, feedback };
 
-const headerEl = document.querySelector('.header');
-const navbarEl = document.querySelector('.navbar');
-const navBtnBoxEl = document.getElementById('navbar__btn-box--js');
-const navUseEl = document.getElementById('navbar-icon--js');
-const homeEl = document.querySelector('.section--home');
-const arrowDownEl = document.getElementById('icon-arrow-down--js');
-const overlayEl = document.querySelector('.overlay');
+const headerEl = document.querySelector('.header') as HTMLElement;
+const navbarEl = document.querySelector('.navbar') as HTMLElement;
+const navBtnBoxEl = document.getElementById(
+  'navbar__btn-box--js'
+) as HTMLDivElement;
+const navUseEl = document.getElementById('navbar-icon--js') as HTMLElement;
+const homeEl = document.querySelector('.section--home') as HTMLElement;
+const arrowDownEl = document.getElementById(
+  'icon-arrow-down--js'
+) as HTMLElement & SVGElement;
+const overlayEl = document.querySelector('.overlay') as HTMLElement;
 
 setTimeout(() => {
   const cn = arrowDownEl.classList[0];
@@ -44,22 +46,28 @@ function updateNav(action = 'toggle') {
   navClosed = true;
 }
 
-function scrollToX(x) {
+function scrollToX(x: number) {
   window.scrollTo({ top: x });
 }
 
 navbarEl.addEventListener('click', function (e) {
-  e.preventDefault();
-  const btn = e.target.closest('#navbar__btn--js');
+  if (!(e.target instanceof Element)) return;
 
-  if (btn) return updateNav();
+  const buttonEl = e.target.closest('#navbar__btn--js');
+
+  if (buttonEl) return updateNav();
 
   const link = e.target.getAttribute('href');
+
   if (!link) return;
 
   updateNav('close');
-  const targetEl = document.getElementById(link.slice(1));
-  scrollToX(targetEl.offsetTop - navBtnBoxEl.getBoundingClientRect().height);
+
+  const linkEl = document.getElementById(link.slice(1));
+
+  if (linkEl) {
+    scrollToX(linkEl.offsetTop - navBtnBoxEl.getBoundingClientRect().height);
+  }
 });
 
 arrowDownEl.addEventListener('click', function () {
@@ -76,15 +84,21 @@ overlayEl.addEventListener('click', function () {
 
 // LAZY LOAD IMAGES /////////////////////
 
-const imgTargets = document.querySelectorAll('img[data-src]');
+const imgTargets = document.querySelectorAll<HTMLImageElement>('img[data-src]');
 
-function loadImg(entries, observer) {
+const loadImg: IntersectionObserverCallback = (entries, observer) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
 
     const { target } = entry;
 
-    target.src = images[target.dataset.src];
+    if (!(target instanceof HTMLImageElement)) return;
+
+    const { src } = target.dataset;
+
+    if (!src) return;
+
+    target.src = images[src];
 
     target.addEventListener('load', () => {
       target.classList.remove('blur');
@@ -92,7 +106,7 @@ function loadImg(entries, observer) {
 
     observer.unobserve(target);
   });
-}
+};
 
 const imgObserver = new IntersectionObserver(loadImg, {
   root: null,
@@ -104,16 +118,20 @@ imgTargets.forEach(img => imgObserver.observe(img));
 
 // FORM LOGIC /////////////////////
 
-const formEl = document.getElementById('contact-form--js');
-const nameEl = document.getElementById('name');
-const emailEl = document.getElementById('email');
-const messageEl = document.getElementById('message');
-const formBtnEl = document.getElementById('form-btn--js');
+const formEl = document.getElementById('contact-form--js') as HTMLFormElement;
+const nameEl = document.getElementById('name') as HTMLInputElement;
+const emailEl = document.getElementById('email') as HTMLInputElement;
+const messageEl = document.getElementById('message') as HTMLInputElement;
+const formBtnEl = document.getElementById('form-btn--js') as HTMLButtonElement;
 const formInputs = [nameEl, emailEl, messageEl];
 
 emailjs.init('gSeSiP9lCnYcT1OoD');
 
-const formChecks = {
+type FormChecks = {
+  [validator: string]: (input: string) => string | false | undefined;
+};
+
+const formChecks: FormChecks = {
   validateLength: val => (val === '' ? "Field can't be empty." : false),
   user_name: val => {
     const isValid = /^[a-z]+(\s{1}[a-z]+)*$/i.test(val);
@@ -128,14 +146,19 @@ const formChecks = {
   },
 };
 
-const setInputErrorMessage = (inputName, errMsg) => {
-  document.getElementById(`err-${inputName}--js`).innerText = errMsg;
+const setInputErrorMessage = (inputName: string, errMsg: string) => {
+  const errorEl = document.getElementById(`err-${inputName}--js`);
+  if (errorEl) {
+    errorEl.innerText = errMsg;
+  }
 };
 
-let feedbackTimerId = null;
+let feedbackTimerId: null | number = null;
 
-const setFormMessage = (text, clearTime) => {
+const setFormMessage = (text: string, clearTime?: number) => {
   const formFeedback = document.getElementById('form-feedback--js');
+
+  if (!formFeedback) return;
 
   formFeedback.innerText = text;
 
@@ -156,7 +179,7 @@ const clearFormValues = () => {
 
 let failedAttempts = 0;
 
-formEl.addEventListener('submit', function (e) {
+formEl.addEventListener('submit', async function (e) {
   e.preventDefault();
   formBtnEl.setAttribute('disabled', 'true');
 
@@ -195,24 +218,22 @@ formEl.addEventListener('submit', function (e) {
 
   this.contact_number.value = (Math.random() * 100000) | 0;
 
-  emailjs
-    .sendForm('contact_service', 'contact_form', this)
-    .then(() => {
-      setFormMessage('Sent!', 10);
+  try {
+    await emailjs.sendForm('contact_service', 'contact_form', this);
+
+    setFormMessage('Sent!', 10);
+    clearFormValues();
+    failedAttempts = 0;
+  } catch (err) {
+    setFormMessage('An error occurred. Please try again later.', 12);
+    failedAttempts++;
+
+    if (failedAttempts >= 2) {
       clearFormValues();
       failedAttempts = 0;
-    })
-    .catch(_ => {
-      setFormMessage('An error occurred. Please try again later.', 12);
-      failedAttempts++;
-
-      if (failedAttempts >= 2) {
-        clearFormValues();
-        failedAttempts = 0;
-      }
-    })
-    .finally(() => {
-      formBtnEl.innerText = 'Submit';
-      formBtnEl.removeAttribute('disabled');
-    });
+    }
+  } finally {
+    formBtnEl.innerText = 'Submit';
+    formBtnEl.removeAttribute('disabled');
+  }
 });

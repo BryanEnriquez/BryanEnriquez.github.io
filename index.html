@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/css/main.scss" />
-    <script type="module" defer src="src/js/index.js"></script>
+    <script type="module" defer src="src/js/index.ts"></script>
     <title>Bryan Enriquez - Web Developer</title>
   </head>
   <body>
     <header class="header">
       <nav class="navbar">
         <div class="navbar__btn-box" id="navbar__btn-box--js">
-          <button class="navbar__btn" id="navbar__btn--js">
+          <button class="navbar__btn" id="navbar__btn--js" type="button">
             <svg>
               <use
                 id="navbar-icon--js"
@@ -20,6 +20,7 @@
             </svg>
           </button>
         </div>
+
         <ul class="navbar__links">
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -31,7 +32,7 @@
     <main class="container">
       <section id="home" class="section section--home">
         <div class="home">
-          <h1>Bryan Enriquez<span>Web developer</span></h1>
+          <h1>Bryan Enriquez <span>Web developer</span></h1>
           <svg class="icon-arrow-down" id="icon-arrow-down--js">
             <use href="src/images/icons.svg#icon-arrow-down"></use>
           </svg>
@@ -318,6 +319,7 @@
               <img
                 src="./src/images/GitHub-Mark.png"
                 alt="link to my github page"
+                loading="lazy"
               />
               <span class="hidden">My GitHub profile</span>
             </a>
