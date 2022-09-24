@@ -1,10 +1,5 @@
 import emailjs from '@emailjs/browser';
 import icons from '../images/icons.svg';
-import portfolio from '../images/portfolio-m.png';
-import designo from '../images/designo-m.png';
-import feedback from '../images/feedback-app-m.png';
-
-const images: { [x: string]: string } = { designo, portfolio, feedback };
 
 const headerEl = document.querySelector('.header') as HTMLElement;
 const navbarEl = document.querySelector('.navbar') as HTMLElement;
@@ -81,40 +76,6 @@ overlayEl.addEventListener('click', function () {
   overlayEl.classList.add('overlay--hidden');
   updateNav('close');
 });
-
-// LAZY LOAD IMAGES /////////////////////
-
-const imgTargets = document.querySelectorAll<HTMLImageElement>('img[data-src]');
-
-const loadImg: IntersectionObserverCallback = (entries, observer) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-
-    const { target } = entry;
-
-    if (!(target instanceof HTMLImageElement)) return;
-
-    const { src } = target.dataset;
-
-    if (!src) return;
-
-    target.src = images[src];
-
-    target.addEventListener('load', () => {
-      target.classList.remove('blur');
-    });
-
-    observer.unobserve(target);
-  });
-};
-
-const imgObserver = new IntersectionObserver(loadImg, {
-  root: null,
-  rootMargin: '50px',
-  threshold: 0.1,
-});
-
-imgTargets.forEach(img => imgObserver.observe(img));
 
 // FORM LOGIC /////////////////////
 

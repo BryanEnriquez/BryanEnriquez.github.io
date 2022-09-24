@@ -127,13 +127,92 @@
           <h2>My Projects</h2>
           <div class="projects__grid">
             <div class="project">
-              <img
-                class="img blur"
-                src="./src/images/feedback-app-s.png"
-                data-src="feedback"
-                alt="product feedback app"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  media="(max-width: 767px)"
+                  srcset="./src/images/webp/audiophileS.webp"
+                />
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="./src/images/webp/audiophileM.webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="./src/images/webp/audiophileL.webp"
+                />
+                <img
+                  class="img"
+                  src="./src/images/jpg/audiophileM.jpg"
+                  loading="lazy"
+                  alt="audiophile ecommerce site"
+                />
+              </picture>
+              <div class="project__copy">
+                <h3 class="project__label">Audiophile - eCommerce Site</h3>
+
+                <div class="project__desc project__desc--audio">
+                  <p>
+                    <b>Description:</b>
+                    "You can't have a portfolio site without an e-Commerce
+                    project." <span>- Someone out there, probably.</span>
+                  </p>
+                  <p>
+                    This project is pretty simple compared to the previous one.
+                    Page data is populated dynamically at build time using SSG
+                    and Strapi, app state is managed using React Context API,
+                    and cart items are persisted using localStorage.
+                  </p>
+                </div>
+
+                <div class="project__stack">
+                  <p>Built with:</p>
+                  <ul>
+                    <li>Nextjs</li>
+                    <li>TypeScript</li>
+                    <li>Strapi</li>
+                    <li>SCSS Modules</li>
+                    <li>Amazon S3</li>
+                  </ul>
+                </div>
+
+                <div class="project__links">
+                  <a
+                    href="https://audi0phile.vercel.app/"
+                    target="_blank"
+                    rel="noopener"
+                    >Live Site</a
+                  >
+                  <a
+                    href="https://github.com/BryanEnriquez/audiophile-frontend"
+                    target="_blank"
+                    rel="noopener"
+                    >Source Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="project">
+              <picture>
+                <source
+                  media="(max-width: 767px)"
+                  srcset="./src/images/webp/feedbackappS.webp"
+                />
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="./src/images/webp/feedbackappM.webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="./src/images/webp/feedbackappL.webp"
+                />
+                <img
+                  class="img"
+                  src="./src/images/jpg/feedbackappM.jpg"
+                  loading="lazy"
+                  alt="product feedback app"
+                />
+              </picture>
               <div class="project__copy">
                 <h3 class="project__label">Product Feedback App</h3>
 
@@ -185,13 +264,26 @@
             </div>
 
             <div class="project">
-              <img
-                class="img blur"
-                src="./src/images/designo-s.png"
-                data-src="designo"
-                alt="designo multipage site"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  media="(max-width: 767px)"
+                  srcset="./src/images/webp/designoS.webp"
+                />
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="./src/images/webp/designoM.webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="./src/images/webp/designoL.webp"
+                />
+                <img
+                  class="img"
+                  src="./src/images/jpg/designoM.jpg"
+                  loading="lazy"
+                  alt="designo multipage site"
+                />
+              </picture>
               <div class="project__copy">
                 <h3 class="project__label">Designo Multi-page Website</h3>
 
@@ -241,13 +333,26 @@
             </div>
 
             <div class="project">
-              <img
-                class="img blur"
-                src="./src/images/portfolio-s.png"
-                data-src="portfolio"
-                alt="my portfolio site"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  media="(max-width: 767px)"
+                  srcset="./src/images/webp/portfolioS.webp"
+                />
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="./src/images/webp/portfolioM.webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="./src/images/webp/portfolioL.webp"
+                />
+                <img
+                  class="img"
+                  src="./src/images/jpg/portfolioM.jpg"
+                  loading="lazy"
+                  alt="my portfolio site"
+                />
+              </picture>
               <div class="project__copy">
                 <h3 class="project__label">This Website</h3>
 
@@ -264,7 +369,7 @@
                   <ul>
                     <li>HTML</li>
                     <li>SCSS</li>
-                    <li>JS</li>
+                    <li>TypeScript</li>
                   </ul>
                 </div>
 
@@ -317,7 +422,7 @@
               rel="noopener"
             >
               <img
-                src="./src/images/GitHub-Mark.png"
+                src="./src/images/github.png"
                 alt="link to my github page"
                 loading="lazy"
               />

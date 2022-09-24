@@ -88,6 +88,15 @@
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
     gap: 10px;
+
+    > p > b {
+      display: block;
+    }
+
+    &--audio > p:first-of-type > span {
+      padding-left: 20px;
+      display: block;
+    }
   }
 
   &__desc p,
