@@ -91,18 +91,18 @@
 
 @media (min-width: $media-m) {
   .header {
+    padding: 0 30px;
+
     &--max {
       height: $header-height;
     }
   }
 
   .navbar {
-    margin: 0 auto;
-    width: calc(100% - 80px);
-    grid-template-columns: 1px 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: $header-height;
 
-    &__btn {
+    &__btnBox {
       display: none;
     }
 
@@ -135,8 +135,13 @@
 }
 
 @media (min-width: $media-l) {
+  .header {
+    padding: 0 40px;
+  }
+
   .navbar {
-    width: 84%;
+    margin: 0 auto;
+    max-width: $max-width-l;
 
     &__links {
       > li {
