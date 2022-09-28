@@ -26,7 +26,7 @@
   align-items: center;
   text-align: center;
 
-  h1 {
+  > h1 {
     position: relative; // for keyframes animation
     opacity: 0;
 
@@ -36,17 +36,17 @@
     animation-fill-mode: forwards;
     animation-timing-function: ease;
     animation-iteration-count: 1;
+
+    > span {
+      display: block;
+      padding-top: 1.5rem;
+      font-weight: 500;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
   }
 
-  span {
-    display: block;
-    padding-top: 1.5rem;
-    font-weight: 500;
-    font-size: 2.2rem;
-    line-height: 1;
-  }
-
-  .icon-arrow-down {
+  > .icon-arrow-down {
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -69,11 +69,11 @@
 
 @media (min-width: $media-m) {
   .home {
-    span {
+    > h1 > span {
       font-size: 2.6rem;
     }
 
-    .icon-arrow-down {
+    > .icon-arrow-down {
       width: 5.5rem;
       height: 5.5rem;
 
@@ -81,6 +81,7 @@
       &:active {
         animation-play-state: paused;
         color: #000;
+        cursor: pointer;
       }
     }
   }

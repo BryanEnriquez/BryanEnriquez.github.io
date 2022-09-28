@@ -7,13 +7,12 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   gap: 70px 0;
-  // padding-bottom: 0.6rem;
 
   h2,
   h3 {
     border-radius: 3px;
-    color: $color-dark-shade;
-    background-color: $color-light;
+    color: $color-secondary;
+    background-color: $color-primary;
   }
 
   h3 {
@@ -56,7 +55,7 @@
         display: block;
         height: 3.5rem;
         width: 3.5rem;
-        fill: $color-light;
+        fill: $color-primary;
       }
 
       span {

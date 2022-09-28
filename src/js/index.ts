@@ -4,7 +4,7 @@ import icons from '../images/icons.svg';
 const headerEl = document.querySelector('.header') as HTMLElement;
 const navbarEl = document.querySelector('.navbar') as HTMLElement;
 const navBtnBoxEl = document.getElementById(
-  'navbar__btn-box--js'
+  'navbar__btnBox--js'
 ) as HTMLDivElement;
 const navUseEl = document.getElementById('navbar-icon--js') as HTMLElement;
 const homeEl = document.querySelector('.section--home') as HTMLElement;

@@ -13,6 +13,5 @@
     "moduleResolution": "node",
     "isolatedModules": true,
   },
-  "include": ["src/js/*.ts", "@types/index.d.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/js/*.ts", "@types/index.d.ts"]
 }

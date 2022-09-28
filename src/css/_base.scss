@@ -2,9 +2,8 @@
   font-family: 'Expletus Sans';
   src: url('./font/ExpletusSans-VariableFont_wght.ttf') format('truetype');
 }
-
-$color-light: #fff;
-$color-dark-shade: #3f414d;
+$color-primary: #f1f1f1;
+$color-secondary: #3f414d;
 
 $media-m: 768px;
 $media-l: 1024px;
@@ -35,10 +34,11 @@ html {
 body {
   font-family: 'Expletus Sans', monospace;
   box-sizing: border-box;
-  color: $color-dark-shade;
-  background-color: $color-light;
+  color: $color-secondary;
+  background-color: $color-primary;
 }
 
+ol,
 ul {
   list-style: none;
 }

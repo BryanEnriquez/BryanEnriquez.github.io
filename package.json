@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Portfolio site",
   "default": "index.html",
+  "private": true,
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist",

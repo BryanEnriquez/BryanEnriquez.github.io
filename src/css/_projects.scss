@@ -56,8 +56,8 @@
 
   padding: 2px;
   border-radius: 3px;
-  color: $color-light;
-  background-color: $color-dark-shade;
+  color: $color-primary;
+  background-color: $color-secondary;
 
   .img {
     display: block;
@@ -130,7 +130,7 @@
       font-size: 1.5rem;
       line-height: 2rem;
       text-align: center;
-      border: 1px solid $color-light;
+      border: 1px solid $color-primary;
       border-radius: 2px;
 
       &:not(:last-of-type) {
@@ -159,8 +159,8 @@
 
       &:link,
       &:visited {
-        color: $color-dark-shade;
-        background-color: $color-light;
+        color: $color-secondary;
+        background-color: $color-primary;
         border: 2px solid transparent;
       }
     }
@@ -193,9 +193,9 @@
       a {
         &:hover,
         &:active {
-          color: $color-light;
-          background-color: $color-dark-shade;
-          border: 2px solid $color-light;
+          color: $color-primary;
+          background-color: $color-secondary;
+          border: 2px solid $color-primary;
         }
       }
     }

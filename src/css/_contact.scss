@@ -42,6 +42,7 @@
       border: none;
       border-radius: 3px;
       outline: none 0 transparent;
+      background-color: $color-primary;
     }
 
     textarea {
@@ -69,7 +70,7 @@
       font-size: 1.6rem;
       line-height: 1.5;
       font-family: sans-serif;
-      color: #ffffff;
+      color: $color-primary;
     }
 
     button {
@@ -78,18 +79,18 @@
       font-family: 'Expletus Sans', sans-serif;
       font-size: 1.6rem;
       line-height: 1;
-      border: 2px solid $color-light;
+      border: 2px solid $color-primary;
       border-radius: 3px;
-      color: $color-dark-shade;
-      background-color: $color-light;
+      color: $color-secondary;
+      background-color: $color-primary;
       transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 
       &:hover {
         @media (min-width: $media-m) {
           cursor: pointer;
-          border-color: $color-light;
-          color: $color-light;
-          background-color: $color-dark-shade;
+          border-color: $color-primary;
+          color: $color-primary;
+          background-color: $color-secondary;
         }
       }
 
