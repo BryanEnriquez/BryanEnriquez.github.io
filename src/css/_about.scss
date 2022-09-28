@@ -1,8 +1,6 @@
 @import './utils';
 
 .about {
-  max-width: 56rem;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
@@ -106,7 +104,6 @@
 
 @media (min-width: $media-l) {
   .about {
-    max-width: $width-max;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     gap: 0 60px;

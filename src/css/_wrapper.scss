@@ -1,0 +1,15 @@
+.mwr {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@media (min-width: $media-m) {
+  .mwr {
+    max-width: $max-width-m;
+  }
+}
+@media (min-width: $media-l) {
+  .mwr {
+    max-width: $max-width-l;
+  }
+}

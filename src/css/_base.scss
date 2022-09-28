@@ -1,7 +1,9 @@
 @font-face {
   font-family: 'Expletus Sans';
   src: url('./font/ExpletusSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 1000;
 }
+
 $color-primary: #f1f1f1;
 $color-secondary: #3f414d;
 
@@ -16,7 +18,9 @@ $h1-m: 3.8rem;
 $h2: 2.6rem;
 $h2-m: 3.4rem;
 
-$width-max: 112rem;
+$max-width: 56rem;
+$max-width-m: 58rem;
+$max-width-l: 112rem;
 
 *,
 *::before,
