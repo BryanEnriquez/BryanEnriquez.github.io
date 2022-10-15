@@ -86,3 +86,11 @@
     }
   }
 }
+
+@media (min-width: $media-l) {
+  .home {
+    > h1 > span {
+      font-size: 2.8rem;
+    }
+  }
+}

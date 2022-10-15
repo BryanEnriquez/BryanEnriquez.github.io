@@ -1,7 +1,7 @@
-@import './utils';
-
 .projects {
-  @include h2-spacing();
+  > h2 {
+    margin-bottom: 30px;
+  }
 
   &__grid {
     display: grid;
@@ -14,6 +14,10 @@
 
 @media (min-width: $media-m) {
   .projects {
+    > h2 {
+      margin-bottom: 40px;
+    }
+
     &__grid {
       gap: 80px 30px;
     }
@@ -22,6 +26,10 @@
 
 @media (min-width: $media-l) {
   .projects {
+    > h2 {
+      margin-bottom: 55px;
+    }
+
     &__grid {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto;
@@ -72,7 +80,15 @@
     }
   }
 
+  &__desc > p,
+  &__stack > span {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
   &__desc {
+    font-weight: 400;
+
     > p:not(:first-of-type) {
       margin-top: 10px;
     }
@@ -83,13 +99,6 @@
     }
   }
 
-  &__desc > p,
-  &__stack > p {
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-
   &__stack {
     display: grid;
     grid-template-columns: 1fr;
@@ -97,8 +106,8 @@
     align-items: start;
     gap: 0.2rem;
 
-    > p {
-      font-weight: 600;
+    > span {
+      font-weight: 500;
     }
 
     > ul {
@@ -110,6 +119,7 @@
       > li {
         margin-top: 6px;
         padding: 6px;
+        font-weight: 400;
         font-size: 1.5rem;
         line-height: 2rem;
         text-align: center;
@@ -136,6 +146,7 @@
       display: flex;
       justify-content: center;
       text-align: center;
+      font-weight: 500;
       font-size: 1.6rem;
       line-height: 1;
       border-radius: 3px;
@@ -160,7 +171,7 @@
     }
 
     &__desc > p,
-    &__stack > p {
+    &__stack > span {
       font-size: 1.6rem;
     }
   }

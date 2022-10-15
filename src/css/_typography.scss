@@ -1,5 +1,5 @@
 h1 {
-  font-size: $h1;
+  font-size: 3.2rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -11,12 +11,29 @@ h2 {
   text-align: center;
 }
 
+h1,
+h2,
+h3 {
+  font-family: 'Expletus Sans', Helvetica, sans-serif;
+}
+
 @media (min-width: $media-m) {
   h1 {
-    font-size: $h1-m;
+    font-size: 3.8rem;
   }
 
   h2 {
     font-size: $h2-m;
+  }
+}
+
+@media (min-width: $media-l) {
+  h1 {
+    font-size: 4.4rem;
+  }
+
+  h2 {
+    font-size: $h2-l;
+    line-height: 1.4;
   }
 }

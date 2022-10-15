@@ -1,26 +1,38 @@
 @font-face {
   font-family: 'Expletus Sans';
-  src: url('./font/ExpletusSans-VariableFont_wght.ttf') format('truetype');
-  font-weight: 400 1000;
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/expletus-sans-500.woff2') format('woff2'),
+    url('./fonts/expletus-sans-500.woff') format('woff'),
+    url('./fonts/expletus-sans-500.ttf') format('truetype');
 }
 
-$color-primary: #f1f1f1;
-$color-secondary: #3f414d;
+@font-face {
+  font-family: 'Expletus Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/expletus-sans-700.woff2') format('woff2'),
+    url('./fonts/expletus-sans-700.woff') format('woff'),
+    url('./fonts/expletus-sans-700.ttf') format('truetype');
+}
 
-$media-m: 768px;
-$media-l: 1024px;
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/noto-sans-400.woff2') format('woff2'),
+    url('./fonts/noto-sans-400.woff') format('woff'),
+    url('./fonts/noto-sans-400.ttf') format('truetype');
+}
 
-$header-height: 70px;
-$header-height-m: 100px;
-
-$h1: 3.2rem;
-$h1-m: 3.8rem;
-$h2: 2.6rem;
-$h2-m: 3.4rem;
-
-$max-width: 56rem;
-$max-width-m: 58rem;
-$max-width-l: 112rem;
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/noto-sans-500.woff2') format('woff2'),
+    url('./fonts/noto-sans-500.woff') format('woff'),
+    url('./fonts/noto-sans-500.ttf') format('truetype');
+}
 
 *,
 *::before,
@@ -36,7 +48,7 @@ html {
 }
 
 body {
-  font-family: 'Expletus Sans', monospace;
+  font-family: 'Noto Sans', Verdana, sans-serif;
   box-sizing: border-box;
   color: $color-secondary;
   background-color: $color-primary;

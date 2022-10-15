@@ -1,32 +1,31 @@
-@import './utils';
-
 .about {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   gap: 70px 0;
 
-  h2,
-  h3 {
-    border-radius: 3px;
+  &__me > h2,
+  &__skills > h3 {
     color: $color-secondary;
     background-color: $color-primary;
-  }
-
-  h3 {
-    @include h2-sizing;
+    border-radius: 3px;
   }
 
   &__me {
     > p {
       margin-top: 24px;
-      font-family: sans-serif;
       font-size: 1.5rem;
       line-height: 1.5;
     }
   }
 
   &__skills {
+    > h3 {
+      font-size: $h2;
+      line-height: 1.5;
+      text-align: center;
+    }
+
     > ul {
       margin-top: 37px;
       display: grid;
@@ -68,6 +67,10 @@
     }
 
     &__skills {
+      > h3 {
+        font-size: $h2-m;
+      }
+
       > ul {
         margin-top: 40px;
 
@@ -95,6 +98,13 @@
     &__me {
       > p {
         margin-top: 32px;
+      }
+    }
+
+    &__skills {
+      > h3 {
+        font-size: $h2-l;
+        line-height: 1.4;
       }
     }
   }
