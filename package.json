@@ -22,13 +22,13 @@
   },
   "homepage": "https://github.com/BryanEnriquez/BryanEnriquez.github.io#readme",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.7.0",
+    "@parcel/transformer-sass": "^2.8.2",
     "gh-pages": "^4.0.0",
-    "parcel": "^2.7.0",
-    "sass": "^1.55.0"
+    "parcel": "^2.8.2",
+    "sass": "^1.57.1"
   },
   "dependencies": {
     "@emailjs/browser": "^3.7.0"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.2%, last 2 versions, Firefox ESR, not dead"
 }
